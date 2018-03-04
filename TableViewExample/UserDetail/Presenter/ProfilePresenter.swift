@@ -34,8 +34,8 @@ class ProfilePresenter {
         }
         
         if let email = profile.email {
-            let dobItem = ProfileViewModelEmailItem(email: email)
-            items.append(dobItem)
+            let emailItem = ProfileViewModelEmailItem(email: email)
+            items.append(emailItem)
         }
         
         let attributes = profile.profileAttributes
