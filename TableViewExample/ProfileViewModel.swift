@@ -11,42 +11,18 @@ import UIKit
 
 class ProfileViewModel: NSObject {
     lazy var server = ServerRequestManager()
+    lazy var presenter = ProfilePresenter(serverRequestManager: server)
 
     var items = [ProfileViewModelItem]()
     
     override init() {
         super.init()
 
-        guard let data = server.dataFromFile("ServerData"), let profile = Profile(data: data) else {
+        guard let data = presenter.loadProfile(), let profile = Profile(data: data) else {
             return
         }
         
-        if let name = profile.fullName, let pictureUrl = profile.pictureUrl {
-            let namePictureItem = NamePictureItem(name: name, pictureUrl: pictureUrl)
-            items.append(namePictureItem)
-        }
-        
-        if let about = profile.about {
-            let aboutItem = AboutItem(about: about)
-            items.append(aboutItem)
-        }
-        
-        if let email = profile.email {
-            let emailItem = EmailItem(email: email)
-            items.append(emailItem)
-        }
-        
-        let attributes = profile.profileAttributes
-        if !attributes.isEmpty {
-            let attributesItem = AttributeItem(attributes: attributes)
-            items.append(attributesItem)
-        }
-        
-        let friends = profile.friends
-        if !profile.friends.isEmpty {
-            let friendsItem = FriendsItem(friends: friends)
-            items.append(friendsItem)
-        }
+        items = presenter.setupItems(fromProfile: profile)
         
     }
 }
