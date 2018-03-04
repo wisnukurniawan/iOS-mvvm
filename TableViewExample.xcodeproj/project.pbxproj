@@ -100,28 +100,7 @@
 		9824A6232047AEA300543788 /* TableViewExample */ = {
 			isa = PBXGroup;
 			children = (
-				9871B353204AF56000DB6561 /* ServerData.json */,
-				9824A6262047AEA300543788 /* ViewController.swift */,
-				9824A6282047AEA300543788 /* Main.storyboard */,
-				9871B33F204AED8A00DB6561 /* NamePictureCell.swift */,
-				9871B340204AED8A00DB6561 /* NamePictureCell.xib */,
-				9871B343204AEDCF00DB6561 /* EmailCell.swift */,
-				9871B344204AEDCF00DB6561 /* EmailCell.xib */,
-				9871B347204AEE0400DB6561 /* AttributeCell.swift */,
-				9871B348204AEE0400DB6561 /* AttributeCell.xib */,
-				9871B34B204AEE1F00DB6561 /* FriendCell.swift */,
-				9871B34C204AEE1F00DB6561 /* FriendCell.xib */,
-				9871B34F204AEE2F00DB6561 /* AboutCell.swift */,
-				9871B350204AEE2F00DB6561 /* AboutCell.xib */,
-				9871B333204AEC5F00DB6561 /* FriendsItem.swift */,
-				9871B335204AEC7F00DB6561 /* AttributeItem.swift */,
-				9871B337204AEC9F00DB6561 /* EmailItem.swift */,
-				9871B339204AECB800DB6561 /* AboutItem.swift */,
-				9871B33B204AECCE00DB6561 /* NamePictureItem.swift */,
-				98702981204BFAD4006AFF8C /* ProfileViewModelItem.swift */,
-				98702983204C005F006AFF8C /* ProfileViewModel.swift */,
-				98702985204C0174006AFF8C /* ProfilePresenter.swift */,
-				9824A6362047AF7900543788 /* Model */,
+				98702987204C0248006AFF8C /* DetailProfile */,
 				9824A63D2047AFF300543788 /* Server */,
 				9824A6242047AEA300543788 /* AppDelegate.swift */,
 				9824A62B2047AEA300543788 /* Assets.xcassets */,
@@ -147,6 +126,59 @@
 				9824A63E2047B00500543788 /* ServerRequestManager.swift */,
 			);
 			path = Server;
+			sourceTree = "<group>";
+		};
+		98702987204C0248006AFF8C /* DetailProfile */ = {
+			isa = PBXGroup;
+			children = (
+				9870298A204C0274006AFF8C /* Presenter */,
+				98702989204C026E006AFF8C /* ViewModel */,
+				98702988204C0268006AFF8C /* View */,
+				9824A6362047AF7900543788 /* Model */,
+			);
+			path = DetailProfile;
+			sourceTree = "<group>";
+		};
+		98702988204C0268006AFF8C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9824A6262047AEA300543788 /* ViewController.swift */,
+				9824A6282047AEA300543788 /* Main.storyboard */,
+				9871B33F204AED8A00DB6561 /* NamePictureCell.swift */,
+				9871B340204AED8A00DB6561 /* NamePictureCell.xib */,
+				9871B343204AEDCF00DB6561 /* EmailCell.swift */,
+				9871B344204AEDCF00DB6561 /* EmailCell.xib */,
+				9871B347204AEE0400DB6561 /* AttributeCell.swift */,
+				9871B348204AEE0400DB6561 /* AttributeCell.xib */,
+				9871B34B204AEE1F00DB6561 /* FriendCell.swift */,
+				9871B34C204AEE1F00DB6561 /* FriendCell.xib */,
+				9871B34F204AEE2F00DB6561 /* AboutCell.swift */,
+				9871B350204AEE2F00DB6561 /* AboutCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		98702989204C026E006AFF8C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9871B333204AEC5F00DB6561 /* FriendsItem.swift */,
+				9871B335204AEC7F00DB6561 /* AttributeItem.swift */,
+				9871B337204AEC9F00DB6561 /* EmailItem.swift */,
+				9871B339204AECB800DB6561 /* AboutItem.swift */,
+				9871B33B204AECCE00DB6561 /* NamePictureItem.swift */,
+				98702981204BFAD4006AFF8C /* ProfileViewModelItem.swift */,
+				98702983204C005F006AFF8C /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9870298A204C0274006AFF8C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				98702985204C0174006AFF8C /* ProfilePresenter.swift */,
+				9871B353204AF56000DB6561 /* ServerData.json */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
