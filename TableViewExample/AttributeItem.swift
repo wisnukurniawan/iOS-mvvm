@@ -8,18 +8,7 @@
 
 import Foundation
 
-class ProfileViewModelAttributeItem: ProfileViewModelItem {
-    var type: ProfileViewModelItemType {
-        return .attribute
-    }
-    
-    var sectionTitle: String {
-        return "Attributes"
-    }
-    
-    var rowCount: Int {
-        return attributes.count
-    }
+class AttributeItem {
     
     var attributes: [Attribute]
     

@@ -8,14 +8,7 @@
 
 import Foundation
 
-class ProfileViewModelNamePictureItem: ProfileViewModelItem {
-    var type: ProfileViewModelItemType {
-        return .nameAndPicture
-    }
-    
-    var sectionTitle: String {
-        return "Main Info"
-    }
+class NamePictureItem {
     
     var name: String
     var pictureUrl: String

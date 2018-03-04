@@ -8,20 +8,17 @@
 
 import UIKit
 
-class NamePictureCell: UITableViewCell, ReusableView {
+class NamePictureCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var pictureImageView: UIImageView?
     
-    var item: ProfileViewModelItem? {
-        didSet {
-            guard let item = item as? ProfileViewModelNamePictureItem else {
-                return
-            }
-            
-            nameLabel?.text = item.name
-            pictureImageView?.image = UIImage(named: item.pictureUrl)
-        }
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+    
+    static var nib:UINib {
+        return UINib(nibName: reuseIdentifier, bundle: nil)
     }
     
     override func awakeFromNib() {

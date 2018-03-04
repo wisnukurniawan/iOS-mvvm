@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttributeCell: UITableViewCell, ReusableView {
+class AttributeCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var valueLabel: UILabel?
@@ -19,4 +19,13 @@ class AttributeCell: UITableViewCell, ReusableView {
             valueLabel?.text = item?.value
         }
     }
+    
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+    
+    static var nib:UINib {
+        return UINib(nibName: reuseIdentifier, bundle: nil)
+    }
+    
 }

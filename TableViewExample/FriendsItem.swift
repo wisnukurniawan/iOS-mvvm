@@ -8,18 +8,7 @@
 
 import Foundation
 
-class ProfileViewModelFriendsItem: ProfileViewModelItem {
-    var type: ProfileViewModelItemType {
-        return .friend
-    }
-    
-    var sectionTitle: String {
-        return "Friends"
-    }
-    
-    var rowCount: Int {
-        return friends.count
-    }
+class FriendsItem {
     
     var friends: [Friend]
     
