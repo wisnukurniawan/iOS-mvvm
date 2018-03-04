@@ -79,33 +79,27 @@ extension ViewController: UITableViewDataSource {
         switch item.type {
         case .nameAndPicture:
             if let cell = tableView.dequeueReusableCell(withIdentifier: NamePictureCell.reuseIdentifier, for: indexPath) as? NamePictureCell {
-                let namePictureItem = item as? NamePictureItem
-                cell.nameLabel?.text = namePictureItem?.name
-                cell.pictureImageView?.image = UIImage(named: (namePictureItem?.pictureUrl)!)
+                cell.item = item
                 return cell
             }
         case .about:
             if let cell = tableView.dequeueReusableCell(withIdentifier: AboutCell.reuseIdentifier, for: indexPath) as? AboutCell {
-                let aboutItem = item as? AboutItem
-                cell.aboutLabel?.text = aboutItem?.about
+                cell.item = item
                 return cell
             }
         case .email:
             if let cell = tableView.dequeueReusableCell(withIdentifier: EmailCell.reuseIdentifier, for: indexPath) as? EmailCell {
-                let emailItem = item as? EmailItem
-                cell.emailLabel?.text = emailItem?.email
+                cell.item = item
                 return cell
             }
         case .attribute:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: AttributeCell.reuseIdentifier, for: indexPath) as? AttributeCell {
-                let attributesItem = item as? AttributeItem
-                cell.item = attributesItem?.attributes[indexPath.row]
+            if let item = item as? AttributeItem, let cell = tableView.dequeueReusableCell(withIdentifier: AttributeCell.reuseIdentifier, for: indexPath) as? AttributeCell {
+                cell.item = item.attributes[indexPath.row]
                 return cell
             }
         case .friend:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: FriendCell.reuseIdentifier, for: indexPath) as? FriendCell {
-                let friendsItem = item as? FriendsItem
-                let friend = friendsItem?.friends[indexPath.row]
+            if let item = item as? FriendsItem, let cell = tableView.dequeueReusableCell(withIdentifier: FriendCell.reuseIdentifier, for: indexPath) as? FriendCell {
+                let friend = item.friends[indexPath.row]
                 cell.item = friend
                 return cell
             }

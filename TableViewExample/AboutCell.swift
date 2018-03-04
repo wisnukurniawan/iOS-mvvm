@@ -12,6 +12,16 @@ class AboutCell: UITableViewCell {
     
     @IBOutlet weak var aboutLabel: UILabel?
     
+    var item: ProfileViewModelItem? {
+        didSet {
+            guard let item = item as? AboutItem else {
+                return
+            }
+            
+            aboutLabel?.text = item.about
+        }
+    }
+    
     static var reuseIdentifier: String {
         return String(describing: self)
     }

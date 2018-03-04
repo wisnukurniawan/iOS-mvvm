@@ -12,6 +12,16 @@ class EmailCell: UITableViewCell {
     
     @IBOutlet weak var emailLabel: UILabel?
     
+    var item: ProfileViewModelItem? {
+        didSet {
+            guard let item = item as? EmailItem else {
+                return
+            }
+            
+            emailLabel?.text = item.email
+        }
+    }
+    
     static var reuseIdentifier: String {
         return String(describing: self)
     }
