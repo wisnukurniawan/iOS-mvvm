@@ -8,11 +8,20 @@
 
 import Foundation
 
-class EmailItem {
+class EmailItem: ProfileViewModelItem {
     
     var email: String
     
     init(email: String) {
         self.email = email
     }
+    
+    var type: ProfileViewModelItemType {
+        return .email
+    }
+    
+    var sectionTitle: String {
+        return "Email"
+    }
+    
 }

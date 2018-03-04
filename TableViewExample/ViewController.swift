@@ -12,11 +12,7 @@ class ViewController: UIViewController {
     
     let server = ServerRequestManager()
     
-    var friendsItem: FriendsItem!
-    var attributesItem: AttributeItem!
-    var emailItem: EmailItem!
-    var aboutItem: AboutItem!
-    var namePictureItem: NamePictureItem!
+    var items = [ProfileViewModelItem]()
     
     @IBOutlet weak var tableView: UITableView?
     
@@ -28,25 +24,30 @@ class ViewController: UIViewController {
         }
         
         if let name = profile.fullName, let pictureUrl = profile.pictureUrl {
-            namePictureItem = NamePictureItem(name: name, pictureUrl: pictureUrl)
+            let namePictureItem = NamePictureItem(name: name, pictureUrl: pictureUrl)
+            items.append(namePictureItem)
         }
         
         if let about = profile.about {
-            aboutItem = AboutItem(about: about)
+            let aboutItem = AboutItem(about: about)
+            items.append(aboutItem)
         }
         
         if let email = profile.email {
-            emailItem = EmailItem(email: email)
+            let emailItem = EmailItem(email: email)
+            items.append(emailItem)
         }
         
         let attributes = profile.profileAttributes
         if !attributes.isEmpty {
-            attributesItem = AttributeItem(attributes: attributes)
+            let attributesItem = AttributeItem(attributes: attributes)
+            items.append(attributesItem)
         }
         
         let friends = profile.friends
         if !profile.friends.isEmpty {
-            friendsItem = FriendsItem(friends: friends)
+            let friendsItem = FriendsItem(friends: friends)
+            items.append(friendsItem)
         }
         
         tableView?.dataSource = self
@@ -66,46 +67,45 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 3:
-            return attributesItem.attributes.count
-        case 4:
-            return friendsItem.friends.count
-        default:
-            return 1
-        }
+        return items[section].rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        let item = items[indexPath.section]
+        switch item.type {
+        case .nameAndPicture:
             if let cell = tableView.dequeueReusableCell(withIdentifier: NamePictureCell.reuseIdentifier, for: indexPath) as? NamePictureCell {
-                cell.nameLabel?.text = namePictureItem.name
-                cell.pictureImageView?.image = UIImage(named: namePictureItem.pictureUrl)
+                let namePictureItem = item as? NamePictureItem
+                cell.nameLabel?.text = namePictureItem?.name
+                cell.pictureImageView?.image = UIImage(named: (namePictureItem?.pictureUrl)!)
                 return cell
             }
-        case 1:
+        case .about:
             if let cell = tableView.dequeueReusableCell(withIdentifier: AboutCell.reuseIdentifier, for: indexPath) as? AboutCell {
-                cell.aboutLabel?.text = aboutItem.about
+                let aboutItem = item as? AboutItem
+                cell.aboutLabel?.text = aboutItem?.about
                 return cell
             }
-        case 2:
+        case .email:
             if let cell = tableView.dequeueReusableCell(withIdentifier: EmailCell.reuseIdentifier, for: indexPath) as? EmailCell {
-                cell.emailLabel?.text = emailItem.email
+                let emailItem = item as? EmailItem
+                cell.emailLabel?.text = emailItem?.email
                 return cell
             }
-        case 3:
+        case .attribute:
             if let cell = tableView.dequeueReusableCell(withIdentifier: AttributeCell.reuseIdentifier, for: indexPath) as? AttributeCell {
-                cell.item = attributesItem.attributes[indexPath.row]
+                let attributesItem = item as? AttributeItem
+                cell.item = attributesItem?.attributes[indexPath.row]
                 return cell
             }
-        default:
+        case .friend:
             if let cell = tableView.dequeueReusableCell(withIdentifier: FriendCell.reuseIdentifier, for: indexPath) as? FriendCell {
-                let friend = friendsItem.friends[indexPath.row]
+                let friendsItem = item as? FriendsItem
+                let friend = friendsItem?.friends[indexPath.row]
                 cell.item = friend
                 return cell
             }

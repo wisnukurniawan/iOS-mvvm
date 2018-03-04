@@ -8,11 +8,19 @@
 
 import Foundation
 
-class AboutItem {
+class AboutItem: ProfileViewModelItem {
     
     var about: String
     
     init(about: String) {
         self.about = about
+    }
+    
+    var type: ProfileViewModelItemType {
+        return .about
+    }
+    
+    var sectionTitle: String {
+        return "About"
     }
 }

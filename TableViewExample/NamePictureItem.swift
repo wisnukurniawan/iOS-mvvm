@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NamePictureItem {
+class NamePictureItem: ProfileViewModelItem {
     
     var name: String
     var pictureUrl: String
@@ -16,5 +16,13 @@ class NamePictureItem {
     init(name: String, pictureUrl: String) {
         self.name = name
         self.pictureUrl = pictureUrl
+    }
+    
+    var type: ProfileViewModelItemType {
+        return .nameAndPicture
+    }
+    
+    var sectionTitle: String {
+        return "Main Info"
     }
 }
