@@ -114,18 +114,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Main Info"
-        case 1:
-            return "About"
-        case 2:
-            return "Email"
-        case 3:
-            return "Attributes"
-        default:
-            return "Friends"
-        }
+        return items[section].sectionTitle
     }
 }
 
